@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests", "tests\tests.csproj", "{430D1932-870F-4742-9DA6-1C71FB2A079B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DominandoTestesDeUnidades", "src\DominandoTestesDeUnidades.csproj", "{4DF44697-368C-460E-9634-B68A0E139B2F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -10,5 +14,15 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{430D1932-870F-4742-9DA6-1C71FB2A079B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{430D1932-870F-4742-9DA6-1C71FB2A079B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{430D1932-870F-4742-9DA6-1C71FB2A079B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{430D1932-870F-4742-9DA6-1C71FB2A079B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DF44697-368C-460E-9634-B68A0E139B2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DF44697-368C-460E-9634-B68A0E139B2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DF44697-368C-460E-9634-B68A0E139B2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DF44697-368C-460E-9634-B68A0E139B2F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
