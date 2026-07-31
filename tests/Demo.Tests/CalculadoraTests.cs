@@ -30,4 +30,17 @@ public class CalculadoraTests
         // Assert
         Assert.Equal(total, resultado);
     }
+
+    [Fact]
+    public void Calculadora_Somar_NaoDeveSerIgual()
+    {
+        //Arrange
+        var calculadora = new Calculadora();
+        
+        // Act
+        var result = calculadora.Somar(1.13123123123, 2.5212313123);
+
+        // Assert
+        Assert.NotEqual(3.3, result, 1);
+    }
 }
