@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6F59665A-E02
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DominandoTestesDeUnidades.Demo", "src\Demo.DominantoTestesDeUnidades\DominandoTestesDeUnidades.Demo.csproj", "{4846C5B3-AB1D-42BC-9078-85AD93B31B91}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Features", "src\Features\Features.csproj", "{CA978446-3CC6-40A5-925A-483CE99C47BF}"
+EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,9 +50,22 @@ Global
 		{4846C5B3-AB1D-42BC-9078-85AD93B31B91}.Release|x64.Build.0 = Release|Any CPU
 		{4846C5B3-AB1D-42BC-9078-85AD93B31B91}.Release|x86.ActiveCfg = Release|Any CPU
 		{4846C5B3-AB1D-42BC-9078-85AD93B31B91}.Release|x86.Build.0 = Release|Any CPU
+		{CA978446-3CC6-40A5-925A-483CE99C47BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA978446-3CC6-40A5-925A-483CE99C47BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA978446-3CC6-40A5-925A-483CE99C47BF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CA978446-3CC6-40A5-925A-483CE99C47BF}.Debug|x64.Build.0 = Debug|Any CPU
+		{CA978446-3CC6-40A5-925A-483CE99C47BF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CA978446-3CC6-40A5-925A-483CE99C47BF}.Debug|x86.Build.0 = Debug|Any CPU
+		{CA978446-3CC6-40A5-925A-483CE99C47BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA978446-3CC6-40A5-925A-483CE99C47BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA978446-3CC6-40A5-925A-483CE99C47BF}.Release|x64.ActiveCfg = Release|Any CPU
+		{CA978446-3CC6-40A5-925A-483CE99C47BF}.Release|x64.Build.0 = Release|Any CPU
+		{CA978446-3CC6-40A5-925A-483CE99C47BF}.Release|x86.ActiveCfg = Release|Any CPU
+		{CA978446-3CC6-40A5-925A-483CE99C47BF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5EAEF149-EFBB-42C1-95E6-D1CEE3DA8EFA} = {E4683F51-8164-47B7-9BD8-1CFB2ECDEF69}
 		{4846C5B3-AB1D-42BC-9078-85AD93B31B91} = {6F59665A-E022-477A-919F-85FF0129E156}
+		{CA978446-3CC6-40A5-925A-483CE99C47BF} = {6F59665A-E022-477A-919F-85FF0129E156}
 	EndGlobalSection
 EndGlobal

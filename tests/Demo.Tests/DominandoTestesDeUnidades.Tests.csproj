@@ -24,4 +24,8 @@
     <ProjectReference Include="..\..\src\Demo.DominantoTestesDeUnidades\DominandoTestesDeUnidades.Demo.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Traits\" />
+  </ItemGroup>
+
 </Project>
