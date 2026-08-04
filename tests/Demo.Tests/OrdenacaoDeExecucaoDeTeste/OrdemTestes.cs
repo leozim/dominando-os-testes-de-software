@@ -2,7 +2,7 @@
 
 namespace DominandoTestesDeUnidades.Tests.OrdenacaoDeExecucaoDeTeste
 {
-    [TestCaseOrderer("Features.Tests.PriorityOrderer", "Features.Tests")]
+    [TestCaseOrderer("DominandoTestesDeUnidades.Tests.OrdenacaoDeExecucaoDeTeste.PriorityOrder", "DominandoTestesDeUnidades.Tests.OrdenacaoDeExecucaoDeTeste")]
     public class OrdemTestes
     {
         public static bool Teste1Chamado;
