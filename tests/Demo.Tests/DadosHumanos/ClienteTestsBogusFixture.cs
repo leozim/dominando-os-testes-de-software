@@ -9,8 +9,7 @@ using Xunit;
 namespace DominandoTestesDeUnidades.Tests.DadosHumanos
 {
     [CollectionDefinition(nameof(ClienteBogusCollection))]
-    public class ClienteBogusCollection : ICollectionFixture<ClienteTestsBogusFixture>
-    {}
+    public class ClienteBogusCollection : ICollectionFixture<ClienteTestsBogusFixture> { }
 
     public class ClienteTestsBogusFixture : IDisposable
     {

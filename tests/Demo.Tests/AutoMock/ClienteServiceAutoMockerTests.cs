@@ -41,18 +41,17 @@ public class ClienteServiceAutoMockerTests
     {
         // Arrange
         var cliente = _clienteTestsBogus.GerarClienteInvalido();
-        var clienteRepo = new Mock<IClienteRepository>();
-        var mediatr = new Mock<IMediator>();
-        
-        var clienteService = new ClienteService(clienteRepo.Object, mediatr.Object);
+        var mocker = new AutoMocker();
+        // precisa ser instancia da classe concreta e não interface!
+        var clienteService = mocker.CreateInstance<ClienteService>();
         
         // Act
         clienteService.Adicionar(cliente);
         
         // Assert
         Assert.False(cliente.EhValido());
-        clienteRepo.Verify(x => x.Adicionar(cliente), Times.Never);
-        mediatr.Verify(m => 
+        mocker.GetMock<IClienteRepository>().Verify(x => x.Adicionar(cliente), Times.Never);
+        mocker.GetMock<IMediator>().Verify(m => 
             m.Publish(It.IsAny<INotification>(), CancellationToken.None), Times.Never);
     }
 
@@ -61,19 +60,17 @@ public class ClienteServiceAutoMockerTests
     public void ClienteService_ObterTodosAtivos_DeveRetornarApenasClientesAtvos()
     {
         // Arrange
-        var clienteRepo = new Mock<IClienteRepository>();
-        var mediatr = new Mock<IMediator>();
+        var mocker = new AutoMocker();
+        var clienteService = mocker.CreateInstance<ClienteService>();
 
-        clienteRepo.Setup(c => c.ObterTodos())
+        mocker.GetMock<IClienteRepository>().Setup(c => c.ObterTodos())
             .Returns(_clienteTestsBogus.ObterClientesVariados());
-        
-        var clienteService = new ClienteService(clienteRepo.Object, mediatr.Object);
         
         // Act
         var clientes = clienteService.ObterTodosAtivos();
         
         // Assert
-        clienteRepo.Verify(r => r.ObterTodos(), Times.Once);
+        mocker.GetMock<IClienteRepository>().Verify(r => r.ObterTodos(), Times.Once);
         Assert.True(clientes.Any());
         Assert.False(clientes.Count(c => !c.Ativo) > 0);
     }
