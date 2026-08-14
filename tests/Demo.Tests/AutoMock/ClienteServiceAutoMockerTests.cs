@@ -2,6 +2,7 @@
 using Features.Clientes;
 using MediatR;
 using Moq;
+using Moq.AutoMock;
 
 namespace DominandoTestesDeUnidades.Tests.AutoMock;
 
@@ -21,16 +22,16 @@ public class ClienteServiceAutoMockerTests
     {
         // Arrange
         var cliente = _clienteTestsBogus.GerarClienteValido();
-        var clienteRepo = new Mock<IClienteRepository>();
-        var mediatr = new Mock<IMediator>();
+        var mocker = new AutoMocker();
+        // precisa ser instancia da classe concreta e não interface!
+        var clienteService = mocker.CreateInstance<ClienteService>();
         
-        var clienteService = new ClienteService(clienteRepo.Object, mediatr.Object);
         // Act
         clienteService.Adicionar(cliente);
         // Assert
         Assert.True(cliente.EhValido());
-        clienteRepo.Verify(x => x.Adicionar(cliente), Times.Once);
-        mediatr.Verify(m => 
+        mocker.GetMock<IClienteRepository>().Verify(x => x.Adicionar(cliente), Times.Once);
+        mocker.GetMock<IMediator>().Verify(m => 
             m.Publish(It.IsAny<INotification>(), CancellationToken.None), Times.Once);
     }
 
