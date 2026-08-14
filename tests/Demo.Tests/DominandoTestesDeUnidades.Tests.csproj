@@ -27,8 +27,4 @@
     <ProjectReference Include="..\..\src\Features\Features.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Moq\" />
-  </ItemGroup>
-
 </Project>
