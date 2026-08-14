@@ -16,7 +16,7 @@ public class ClienteServiceAutoMockerTests
     }
 
     [Fact(DisplayName = "Adicionar Cliente com Sucesso")]
-    [Trait("Categoria", "Cliente Service Mock Tests")]
+    [Trait("Categoria", "Cliente Service AutoMock Tests")]
     public void ClienteService_Adicionar_DeveExecutarComSucesso()
     {
         // Arrange
@@ -35,7 +35,7 @@ public class ClienteServiceAutoMockerTests
     }
 
     [Fact(DisplayName = "Adicionar Cliente com Falha")]
-    [Trait("Categoria", "Cliente Service Mock Tests")]
+    [Trait("Categoria", "Cliente Service AutoMock Tests")]
     public void ClienteService_Adicionar_DeveFalharDevidoClienteInvalido()
     {
         // Arrange
@@ -56,7 +56,7 @@ public class ClienteServiceAutoMockerTests
     }
 
     [Fact(DisplayName = "Adicionar Clientes Ativos")]
-    [Trait("Categoria", "Cliente Service Mock Tests")]
+    [Trait("Categoria", "Cliente Service AutoMock Tests")]
     public void ClienteService_ObterTodosAtivos_DeveRetornarApenasClientesAtvos()
     {
         // Arrange
