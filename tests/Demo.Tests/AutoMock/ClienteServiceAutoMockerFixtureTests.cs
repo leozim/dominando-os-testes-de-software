@@ -10,11 +10,15 @@ namespace DominandoTestesDeUnidades.Tests.AutoMock;
 public class ClienteServiceAutoMockerFixtureTests
 {
     private readonly ClienteTestsAutoMockerFixture _clienteTestsAutoMockerFixture;
+    private readonly ClienteService? _clienteService;
 
     public ClienteServiceAutoMockerFixtureTests(ClienteTestsAutoMockerFixture clienteTestsAutoMockerFixture)
     {
         _clienteTestsAutoMockerFixture = clienteTestsAutoMockerFixture;
+        _clienteService = _clienteTestsAutoMockerFixture?.ObterClienteService();
     }
+    
+    
 
     [Fact(DisplayName = "Adicionar Cliente com Sucesso AutoMockFixture")]
     [Trait("Categoria", "Cliente Service AutoMockFixture Tests")]
@@ -41,10 +45,9 @@ public class ClienteServiceAutoMockerFixtureTests
         // Arrange
         var cliente = _clienteTestsAutoMockerFixture.GerarClienteInvalido();
         // precisa ser instancia da classe concreta e não interface!
-        var clienteService = _clienteTestsAutoMockerFixture.ObterClienteService();
         
         // Act
-        clienteService.Adicionar(cliente);
+        _clienteService?.Adicionar(cliente);
         
         // Assert
         Assert.False(cliente.EhValido());
@@ -58,13 +61,11 @@ public class ClienteServiceAutoMockerFixtureTests
     public void ClienteService_ObterTodosAtivos_DeveRetornarApenasClientesAtvos()
     {
         // Arrange
-        var clienteService = _clienteTestsAutoMockerFixture.ObterClienteService();
-
         _clienteTestsAutoMockerFixture.Mocker.GetMock<IClienteRepository>().Setup(c => c.ObterTodos())
             .Returns(_clienteTestsAutoMockerFixture.ObterClientesVariados());
         
         // Act
-        var clientes = clienteService.ObterTodosAtivos();
+        var clientes = _clienteService?.ObterTodosAtivos();
         
         // Assert
         _clienteTestsAutoMockerFixture.Mocker.GetMock<IClienteRepository>().Verify(r => r.ObterTodos(), Times.Once);
