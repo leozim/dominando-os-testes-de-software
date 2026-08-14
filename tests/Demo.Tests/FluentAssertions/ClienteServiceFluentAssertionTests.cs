@@ -56,7 +56,7 @@ public class ClienteServiceFluentAssertionTests
 
         // Assert
         cliente.EhValido().Should().BeFalse("Possui inconsistências");
-        cliente.ValidationResult.Errors.Should().HaveCountLessThanOrEqualTo(1);
+        cliente.ValidationResult.Errors.Should().HaveCountGreaterThanOrEqualTo(1);
 
         _clienteTestsAutoMockerFixture.Mocker.GetMock<IClienteRepository>()
             .Verify(r => r.Adicionar(cliente), Times.Never);
@@ -80,7 +80,7 @@ public class ClienteServiceFluentAssertionTests
         //Assert.False(clientes.Count(c => !c.Ativo) > 0);
 
         // Assert
-        clientes.Should().HaveCountLessThanOrEqualTo(1).And.OnlyHaveUniqueItems();
+        clientes.Should().HaveCountGreaterThanOrEqualTo(1).And.OnlyHaveUniqueItems();
         clientes.Should().NotContain(c => !c.Ativo);
 
         _clienteTestsAutoMockerFixture.Mocker.GetMock<IClienteRepository>().Verify(r => r.ObterTodos(), Times.Once);
