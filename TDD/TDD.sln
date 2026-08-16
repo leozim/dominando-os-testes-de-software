@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NerdStore.Vendas.Application.Tests", "tests\NerdStore.Vendas.Application.Tests.csproj", "{F7572E84-B4D6-4974-8A8B-6757BABFA7AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NerdStore.Vendas.Domain.Tests", "tests\NerdStore.Vendas.Domain.Tests.csproj", "{BA98499F-99B1-4575-AAB0-9AE8FE500B8E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F7572E84-B4D6-4974-8A8B-6757BABFA7AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7572E84-B4D6-4974-8A8B-6757BABFA7AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7572E84-B4D6-4974-8A8B-6757BABFA7AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7572E84-B4D6-4974-8A8B-6757BABFA7AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA98499F-99B1-4575-AAB0-9AE8FE500B8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA98499F-99B1-4575-AAB0-9AE8FE500B8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA98499F-99B1-4575-AAB0-9AE8FE500B8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA98499F-99B1-4575-AAB0-9AE8FE500B8E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
