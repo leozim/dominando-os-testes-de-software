@@ -5,6 +5,7 @@ namespace NerdStore.Vendas.Domain;
 public class Pedido
 {
     private readonly List<PedidoItem> _pedidoItems;
+    public int MAX_UNIDADES_ITEM => 15;
 
     public Guid ClienteId { get; private set; }
     public decimal ValorTotal { get; private set; }
@@ -16,13 +17,15 @@ public class Pedido
         _pedidoItems = new List<PedidoItem>();
     }
     
-    public void CalcularValorPedido()
+    private void CalcularValorPedido()
     {
         ValorTotal = _pedidoItems.Sum(i => i.CalcularValor());
     }
     
     public void AdicionarItem(PedidoItem pedidoItem)
     {
+        if (pedidoItem.Quantidade > MAX_UNIDADES_ITEM) throw new DomainException();
+        
         if (_pedidoItems.Any(p => p.ProdutoId == pedidoItem.ProdutoId))
         {
             var itemExistente = _pedidoItems
