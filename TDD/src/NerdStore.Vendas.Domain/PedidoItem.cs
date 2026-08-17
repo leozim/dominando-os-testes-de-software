@@ -14,4 +14,9 @@ public class PedidoItem
         Quantidade = quantidade;
         ValorUnitario = valorUnitario;
     }
+
+    internal void AdicionarUnidades(int unidades)
+    {
+        Quantidade += unidades;
+    }
 }

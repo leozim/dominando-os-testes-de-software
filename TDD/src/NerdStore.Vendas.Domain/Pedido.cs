@@ -15,6 +15,16 @@ public class Pedido
     }
     public void AdicionarItem(PedidoItem pedidoItem)
     {
+        if (_pedidoItems.Any(p => p.ProdutoId == pedidoItem.ProdutoId))
+        {
+            var itemExistente = _pedidoItems
+                .FirstOrDefault(p => p.ProdutoId == pedidoItem.ProdutoId);
+            itemExistente.AdicionarUnidades(pedidoItem.Quantidade);
+            pedidoItem = itemExistente;
+            
+            _pedidoItems.Remove(itemExistente);
+        }
+        
         _pedidoItems.Add(pedidoItem);
         ValorTotal = PedidoItems.Sum(i => i.Quantidade * i.ValorUnitario);
     }
