@@ -19,4 +19,9 @@ public class PedidoItem
     {
         Quantidade += unidades;
     }
+
+    internal decimal CalcularValor()
+    {
+        return Quantidade * ValorUnitario;
+    }
 }

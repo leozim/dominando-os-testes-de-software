@@ -34,6 +34,7 @@ public class PedidoTests
         pedido.AdicionarItem(pedidoItem2);
         // Assert
         Assert.Equal(300, pedido.ValorTotal);
+        Assert.Single(pedido.PedidoItems);
         Assert.Equal(1, pedido.PedidoItems.Count);
         Assert.Equal(3, pedido.PedidoItems.FirstOrDefault(p => p.ProdutoId == produtoId).Quantidade);
         

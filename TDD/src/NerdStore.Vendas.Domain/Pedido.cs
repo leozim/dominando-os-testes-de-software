@@ -13,6 +13,12 @@ public class Pedido
     {
         _pedidoItems = new List<PedidoItem>();
     }
+    
+    public void CalcularValorPedido()
+    {
+        ValorTotal = _pedidoItems.Sum(i => i.CalcularValor());
+    }
+    
     public void AdicionarItem(PedidoItem pedidoItem)
     {
         if (_pedidoItems.Any(p => p.ProdutoId == pedidoItem.ProdutoId))
@@ -26,6 +32,6 @@ public class Pedido
         }
         
         _pedidoItems.Add(pedidoItem);
-        ValorTotal = PedidoItems.Sum(i => i.Quantidade * i.ValorUnitario);
+        CalcularValorPedido();
     }
 }
