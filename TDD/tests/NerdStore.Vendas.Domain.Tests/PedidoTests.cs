@@ -47,10 +47,8 @@ public class PedidoTests
     {
         // Arrange
 
-        // Act
-
-        // Assert
-
+        // Act & Assert
+        
     }
     
 }
