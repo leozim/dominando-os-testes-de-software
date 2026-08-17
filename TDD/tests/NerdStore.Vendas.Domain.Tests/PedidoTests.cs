@@ -39,5 +39,18 @@ public class PedidoTests
         Assert.Equal(3, pedido.PedidoItems.FirstOrDefault(p => p.ProdutoId == produtoId).Quantidade);
         
     }
+
+    // ChamadaDoMétodo_EstadoObjeto_Comportamento
+    [Fact(DisplayName = "Adicionar Item pedido Acima de 15")]
+    [Trait("Categoria", "Pedido tests")]
+    public void AdicionarItemPedido_ItemAcimade15Unidades_DeveRetornarException()
+    {
+        // Arrange
+
+        // Act
+
+        // Assert
+
+    }
     
 }
