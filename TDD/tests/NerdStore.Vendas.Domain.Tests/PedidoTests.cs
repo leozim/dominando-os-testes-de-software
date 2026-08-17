@@ -7,7 +7,7 @@ public class PedidoTests
     public void AdicionarItempedido_NovoPedido_DeveAtualizarValor()
     {
         // Arrange
-        var pedido = new Pedido();
+        var pedido = Pedido.PedidoFactory.NovoPedidoRascunho(Guid.NewGuid());
         var pedidoItem = new PedidoItem(Guid.NewGuid(), "Produto Teste", 2, 100);
 
         // Act
@@ -23,7 +23,7 @@ public class PedidoTests
     public void AdicionarItemPedido_ItemExistente_DeveIncrementarUnidadesSomarValores()
     {
         // Arrange
-        var pedido = new Pedido();
+        var pedido = Pedido.PedidoFactory.NovoPedidoRascunho(Guid.NewGuid());
         var produtoId = Guid.NewGuid();
         var pedidoItem = new PedidoItem(produtoId, "Produto Teste", 2, 100);
         pedido.AdicionarItem(pedidoItem);

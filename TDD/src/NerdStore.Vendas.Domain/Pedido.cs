@@ -5,11 +5,13 @@ namespace NerdStore.Vendas.Domain;
 public class Pedido
 {
     private readonly List<PedidoItem> _pedidoItems;
-    
+
+    public Guid ClienteId { get; private set; }
     public decimal ValorTotal { get; private set; }
+    public PedidoStatus PedidoStatus { get; private set; }
     public IReadOnlyCollection<PedidoItem> PedidoItems => _pedidoItems;
     
-    public Pedido()
+    protected Pedido()
     {
         _pedidoItems = new List<PedidoItem>();
     }
@@ -33,5 +35,24 @@ public class Pedido
         
         _pedidoItems.Add(pedidoItem);
         CalcularValorPedido();
+    }
+
+    public void TornarRascunho()
+    {
+        PedidoStatus = PedidoStatus.Rascunho;
+    }
+
+    public static class PedidoFactory
+    {
+        public static Pedido NovoPedidoRascunho(Guid clienteId)
+        {
+            var pedido = new Pedido
+            {
+                ClienteId = clienteId
+            };
+            
+            pedido.TornarRascunho();
+            return pedido;
+        }
     }
 }
