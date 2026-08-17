@@ -5,7 +5,7 @@ namespace NerdStore.Vendas.Domain;
 public class Pedido
 {
     private readonly List<PedidoItem> _pedidoItems;
-    public int MAX_UNIDADES_ITEM => 15;
+    public static int MAX_UNIDADES_ITEM => 15;
 
     public Guid ClienteId { get; private set; }
     public decimal ValorTotal { get; private set; }
