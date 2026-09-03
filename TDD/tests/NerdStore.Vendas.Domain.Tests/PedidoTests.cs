@@ -55,4 +55,20 @@ public class PedidoTests
         // Act & Assert
         Assert.Throws<DomainException>(() => pedido.AdicionarItem(pedidoItem));
     }
+    
+    // ChamadaDoMétodo_EstadoObjeto_Comportamento
+    [Fact(DisplayName = "Adicionar Item Pedido Existente Acima do Permitido")]
+    [Trait("Categoria", "Pedido tests")]
+    public void AdicionarItemPedido_ItemExistenteSomaUnidadesAcimaDoPermitido_DeveRetornarException()
+    {
+        // Arrange
+        var pedido = Pedido.PedidoFactory.NovoPedidoRascunho(Guid.NewGuid());
+        var produtoId = Guid.NewGuid();
+        var pedidoItem = new PedidoItem(produtoId, "Produto Teste Exception", Pedido.MAX_UNIDADES_ITEM, 100);
+        var pedidoItem2 = new PedidoItem(produtoId, "Produto Teste Exception 2", 1, 100);
+        pedido.AdicionarItem(pedidoItem);
+        
+        // Act & Assert
+        Assert.Throws<DomainException>(() => pedido.AdicionarItem(pedidoItem2));
+    }
 }
