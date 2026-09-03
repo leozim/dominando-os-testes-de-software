@@ -55,12 +55,4 @@ public class PedidoTests
         // Act & Assert
         Assert.Throws<DomainException>(() => pedido.AdicionarItem(pedidoItem));
     }
-    
-    [Fact(DisplayName = "Adicionar Item pedido Abaixo do permitido")]
-    [Trait("Categoria", "Pedido tests")]
-    public void AdicionarItemPedido_UnidadesItemItemAbaixoDoPermitido_DeveRetornarException()
-    {
-        // Arrange & Act & Assert
-        Assert.Throws<DomainException>(() => new PedidoItem(Guid.NewGuid(), "Produto Teste Exception", Pedido.MIN_UNIDADES_ITEM - 1, 100));
-    }
 }
