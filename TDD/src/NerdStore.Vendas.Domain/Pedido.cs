@@ -12,6 +12,7 @@ public class Pedido
     }
 
     public static int MAX_UNIDADES_ITEM => 15;
+    public static int MIN_UNIDADES_ITEM => 1;
 
     public Guid ClienteId { get; private set; }
     public decimal ValorTotal { get; private set; }
@@ -25,7 +26,7 @@ public class Pedido
 
     public void AdicionarItem(PedidoItem pedidoItem)
     {
-        if (pedidoItem.Quantidade > MAX_UNIDADES_ITEM) throw new DomainException();
+        if (pedidoItem.Quantidade > MAX_UNIDADES_ITEM) throw new DomainException($"Máximo de {MAX_UNIDADES_ITEM} unidades por produto.");
 
         if (_pedidoItems.Any(p => p.ProdutoId == pedidoItem.ProdutoId))
         {

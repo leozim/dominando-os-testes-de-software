@@ -43,17 +43,24 @@ public class PedidoTests
     }
 
     // ChamadaDoMétodo_EstadoObjeto_Comportamento
-    [Fact(DisplayName = "Adicionar Item pedido Acima de 15")]
+    [Fact(DisplayName = "Adicionar Item pedido Acima do permitido")]
     [Trait("Categoria", "Pedido tests")]
-    public void AdicionarItemPedido_ItemAcimade15Unidades_DeveRetornarException()
+    public void AdicionarItemPedido_UnidadesItemItemAcimaDoPermitido_DeveRetornarException()
     {
         // Arrange
         var pedido = Pedido.PedidoFactory.NovoPedidoRascunho(Guid.NewGuid());
         var produtoId = Guid.NewGuid();
-        var pedidoItem = new PedidoItem(produtoId, "Produto Teste Exception", 16, 100);
+        var pedidoItem = new PedidoItem(produtoId, "Produto Teste Exception", Pedido.MAX_UNIDADES_ITEM + 1, 100);
         
         // Act & Assert
         Assert.Throws<DomainException>(() => pedido.AdicionarItem(pedidoItem));
     }
     
+    [Fact(DisplayName = "Adicionar Item pedido Abaixo do permitido")]
+    [Trait("Categoria", "Pedido tests")]
+    public void AdicionarItemPedido_UnidadesItemItemAbaixoDoPermitido_DeveRetornarException()
+    {
+        // Arrange & Act & Assert
+        Assert.Throws<DomainException>(() => new PedidoItem(Guid.NewGuid(), "Produto Teste Exception", Pedido.MIN_UNIDADES_ITEM - 1, 100));
+    }
 }
