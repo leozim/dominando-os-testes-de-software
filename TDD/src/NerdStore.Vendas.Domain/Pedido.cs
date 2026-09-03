@@ -24,11 +24,16 @@ public class Pedido
         ValorTotal = _pedidoItems.Sum(i => i.CalcularValor());
     }
 
+    public bool PedidoItemExistente(PedidoItem item)
+    {
+        return _pedidoItems.Any(p => p.ProdutoId == item.ProdutoId);
+    }
+
     public void AdicionarItem(PedidoItem pedidoItem)
     {
         if (pedidoItem.Quantidade > MAX_UNIDADES_ITEM) throw new DomainException($"Máximo de {MAX_UNIDADES_ITEM} unidades por produto.");
 
-        if (_pedidoItems.Any(p => p.ProdutoId == pedidoItem.ProdutoId))
+        if (PedidoItemExistente(pedidoItem))
         {
             var quantidadeItens = pedidoItem.Quantidade;
             var itemExistente = _pedidoItems
