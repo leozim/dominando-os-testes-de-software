@@ -5,7 +5,7 @@ namespace NerdStore.Vendas.Domain.Tests;
 public class PedidoTests
 {
     [Fact(DisplayName = "Adicionar Item Pedido Vazio")]
-    [Trait("Categoria", "Pedido Tests")]
+    [Trait("Categoria", "Vendas - Pedido")]
     public void AdicionarItempedido_NovoPedido_DeveAtualizarValor()
     {
         // Arrange
@@ -21,7 +21,7 @@ public class PedidoTests
 
     // ChamadaDoMétodo_EstadoObjeto_Comportamento
     [Fact(DisplayName = "Adicionar Item Pedido Existente")]
-    [Trait("Categoria", "Pedido Tests")]
+    [Trait("Categoria", "Vendas - Pedido")]
     public void AdicionarItemPedido_ItemExistente_DeveIncrementarUnidadesSomarValores()
     {
         // Arrange
@@ -44,7 +44,7 @@ public class PedidoTests
 
     // ChamadaDoMétodo_EstadoObjeto_Comportamento
     [Fact(DisplayName = "Adicionar Item pedido Acima do permitido")]
-    [Trait("Categoria", "Pedido tests")]
+    [Trait("Categoria", "Vendas - Pedido")]
     public void AdicionarItemPedido_UnidadesItemItemAcimaDoPermitido_DeveRetornarException()
     {
         // Arrange
@@ -58,7 +58,7 @@ public class PedidoTests
     
     // ChamadaDoMétodo_EstadoObjeto_Comportamento
     [Fact(DisplayName = "Adicionar Item Pedido Existente Acima do Permitido")]
-    [Trait("Categoria", "Pedido tests")]
+    [Trait("Categoria", "Vendas - Pedido")]
     public void AdicionarItemPedido_ItemExistenteSomaUnidadesAcimaDoPermitido_DeveRetornarException()
     {
         // Arrange
