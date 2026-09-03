@@ -1,4 +1,6 @@
-﻿namespace NerdStore.Vendas.Domain.Tests;
+﻿using NerdStore.Vendas.Domain.DomainExceptions;
+
+namespace NerdStore.Vendas.Domain.Tests;
 
 public class PedidoTests
 {
@@ -46,9 +48,12 @@ public class PedidoTests
     public void AdicionarItemPedido_ItemAcimade15Unidades_DeveRetornarException()
     {
         // Arrange
-
-        // Act & Assert
+        var pedido = Pedido.PedidoFactory.NovoPedidoRascunho(Guid.NewGuid());
+        var produtoId = Guid.NewGuid();
+        var pedidoItem = new PedidoItem(produtoId, "Produto Teste Exception", 16, 100);
         
+        // Act & Assert
+        Assert.Throws<DomainException>(() => pedido.AdicionarItem(pedidoItem));
     }
     
 }
