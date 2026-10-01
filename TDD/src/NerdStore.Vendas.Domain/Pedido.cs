@@ -66,13 +66,13 @@ public class Pedido
     public void AtualizarItem(PedidoItem pedidoItem)
     {
         ValidarPedidoItemInexistente(pedidoItem);
+        ValidarQuantidadeItemPermitida(pedidoItem);
         
         var itemExistente = _pedidoItems.FirstOrDefault(p => p.ProdutoId == pedidoItem.ProdutoId);
         
         _pedidoItems.Remove(itemExistente);
         _pedidoItems.Add(pedidoItem);
         
-        ValidarQuantidadeItemPermitida(pedidoItem);
         CalcularValorPedido();
     }
 
