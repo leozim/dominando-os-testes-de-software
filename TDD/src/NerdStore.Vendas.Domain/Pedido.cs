@@ -29,6 +29,11 @@ public class Pedido
         return _pedidoItems.Any(p => p.ProdutoId == item.ProdutoId);
     }
 
+    private void ValidarPedidoItemInexistente(PedidoItem item)
+    {
+        if (!PedidoItemExistente(item)) throw new DomainException($"O item não existe no pedido");
+    }
+
     private void ValidarQuantidadeItemPermitida(PedidoItem item)
     {
         var quantidadeItens = item.Quantidade;
@@ -60,7 +65,14 @@ public class Pedido
 
     public void AtualizarItem(PedidoItem pedidoItem)
     {
-        if (!PedidoItemExistente(pedidoItem)) throw new DomainException($"O item não existe no pedido");
+        ValidarPedidoItemInexistente(pedidoItem);
+        
+        var itemExistente = _pedidoItems.FirstOrDefault(p => p.ProdutoId == pedidoItem.ProdutoId);
+        
+        _pedidoItems.Remove(itemExistente);
+        _pedidoItems.Add(pedidoItem);
+        
+        CalcularValorPedido();
     }
 
     public void TornarRascunho()

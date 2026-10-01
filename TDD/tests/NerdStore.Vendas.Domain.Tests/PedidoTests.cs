@@ -83,4 +83,25 @@ public class PedidoTests
         // Act & Assert
         Assert.Throws<DomainException>(() => pedido.AtualizarItem(pedidoItemAtualizado));
     }
+    // ChamadaDoMétodo_EstadoObjeto_Comportamento
+    [Fact(DisplayName = "Atualizar item Pedido Valido")]
+    [Trait("Categoria", "Vendas - Pedido")]
+    public void AtualizarItemPedido_ItemValido_DeveAtualizarQuantidade()
+    {
+        // Arrange
+        var pedido = Pedido.PedidoFactory.NovoPedidoRascunho(Guid.NewGuid());
+        var produtoId = Guid.NewGuid();
+        var pedidoItem = new PedidoItem(produtoId, "Produto Teste", 2, 100);
+        
+        pedido.AdicionarItem(pedidoItem);
+        
+        var pedidoItemAtualizado = new PedidoItem(produtoId, "Produto Teste", 5, 100);
+        var novaQuantidade = pedidoItemAtualizado.Quantidade;
+        
+        // Act
+        pedido.AtualizarItem(pedidoItemAtualizado);
+        
+        // Assert
+        Assert.Equal(novaQuantidade, pedido.PedidoItems.FirstOrDefault(p => p.ProdutoId == produtoId)?.Quantidade);
+    }
 }
