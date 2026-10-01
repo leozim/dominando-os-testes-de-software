@@ -71,4 +71,16 @@ public class PedidoTests
         // Act & Assert
         Assert.Throws<DomainException>(() => pedido.AdicionarItem(pedidoItem2));
     }
+
+    [Fact(DisplayName = "Atualizar Item Pedido Inexistente")]
+    [Trait("Categoria", "Vendas - Pedido")]
+    public void AtualizarItemPedido_ItemNaoExisteNaLista_DeveRetornarException()
+    {
+        // Arrange
+        var pedido = Pedido.PedidoFactory.NovoPedidoRascunho(Guid.NewGuid());
+        var pedidoItemAtualizado = new PedidoItem(Guid.NewGuid(), "Produto Teste", 5, 100);
+        
+        // Act & Assert
+        Assert.Throws<DomainException>(() => pedido.AtualizarItem(pedidoItemAtualizado));
+    }
 }

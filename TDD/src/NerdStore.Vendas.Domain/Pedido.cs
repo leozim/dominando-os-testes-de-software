@@ -58,6 +58,11 @@ public class Pedido
         CalcularValorPedido();
     }
 
+    public void AtualizarItem(PedidoItem pedidoItem)
+    {
+        if (!PedidoItemExistente(pedidoItem)) throw new DomainException($"O item não existe no pedido");
+    }
+
     public void TornarRascunho()
     {
         PedidoStatus = PedidoStatus.Rascunho;
