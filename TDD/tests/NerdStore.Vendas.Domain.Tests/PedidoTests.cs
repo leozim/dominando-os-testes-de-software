@@ -104,4 +104,20 @@ public class PedidoTests
         // Assert
         Assert.Equal(novaQuantidade, pedido.PedidoItems.FirstOrDefault(p => p.ProdutoId == produtoId)?.Quantidade);
     }
+
+    [Fact(DisplayName = "Atualizar Item Pedido Quantidade acima do permitido")]
+    [Trait("Categpria", "Vendas - Pedido")]
+    public void AtualizarItemPedido_ItemUnidadesAcimaDoPermitido_DeveRetornarException()
+    {
+        // Arrange
+        var pedido = Pedido.PedidoFactory.NovoPedidoRascunho(Guid.NewGuid());
+        var produtoId = Guid.NewGuid();
+        var pedidoItemExistente1 = new PedidoItem(produtoId, "Produto Teste", 3, 15);
+        pedido.AdicionarItem(pedidoItemExistente1);
+        
+        var pedidoItemAtualizado = new PedidoItem(produtoId, "Produto Teste", Pedido.MAX_UNIDADES_ITEM + 1, 15);
+        
+        // Act & Assert
+        Assert.Throws<DomainException>(() => pedido.AtualizarItem(pedidoItemAtualizado));
+    }
 }

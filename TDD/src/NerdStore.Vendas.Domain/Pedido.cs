@@ -72,6 +72,7 @@ public class Pedido
         _pedidoItems.Remove(itemExistente);
         _pedidoItems.Add(pedidoItem);
         
+        ValidarQuantidadeItemPermitida(pedidoItem);
         CalcularValorPedido();
     }
 
