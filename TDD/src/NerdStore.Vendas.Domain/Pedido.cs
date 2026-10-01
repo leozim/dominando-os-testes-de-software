@@ -76,6 +76,15 @@ public class Pedido
         CalcularValorPedido();
     }
 
+    public void RemoverItem(PedidoItem pedidoItem)
+    {
+        ValidarPedidoItemInexistente(pedidoItem);
+        
+        _pedidoItems.Remove(pedidoItem);
+        
+        CalcularValorPedido();
+    }
+
     public void TornarRascunho()
     {
         PedidoStatus = PedidoStatus.Rascunho;
