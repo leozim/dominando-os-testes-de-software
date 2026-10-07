@@ -21,4 +21,17 @@ public class VoucherTests
         // Assert
         Assert.True(result.IsValid);
     }
+
+    [Fact(DisplayName = "Validar Voucher Tipo Valor Inválido")]
+    [Trait("Categoria", "Vendas - Voucher")]
+    public void Voucher_ValidarVoucherTipoValor_DeveEstarInvalido()
+    {
+        // Arrange
+        var voucher = new Voucher("", null, null, 
+            TipoDescontoVoucher.Valor, 0, DateTime.Now.AddDays(-1), true, true);
+        // Act
+        var result = voucher.ValidarSeAplicavel();
+        // Assert
+        Assert.False(result.IsValid);
+    }
 }
