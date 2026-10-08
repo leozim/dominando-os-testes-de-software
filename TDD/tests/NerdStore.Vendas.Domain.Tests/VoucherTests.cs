@@ -28,10 +28,17 @@ public class VoucherTests
     {
         // Arrange
         var voucher = new Voucher("", null, null, 
-            TipoDescontoVoucher.Valor, 0, DateTime.Now.AddDays(-1), true, true);
+            TipoDescontoVoucher.Valor, 0, DateTime.Now.AddDays(-1), false, true);
         // Act
         var result = voucher.ValidarSeAplicavel();
         // Assert
         Assert.False(result.IsValid);
+        Assert.Equal(6, result.Errors.Count);
+        Assert.Contains(Voucher.VoucherAplicavelValidation.AtivoErroMsg, result.Errors.Select(c => c.ErrorMessage));
+        Assert.Contains(Voucher.VoucherAplicavelValidation.CodigoErroMsg, result.Errors.Select(c => c.ErrorMessage));
+        Assert.Contains(Voucher.VoucherAplicavelValidation.DataValidadeErroMsg, result.Errors.Select(c => c.ErrorMessage));
+        Assert.Contains(Voucher.VoucherAplicavelValidation.QuantidadeErroMsg, result.Errors.Select(c => c.ErrorMessage));
+        Assert.Contains(Voucher.VoucherAplicavelValidation.UtilizadoErroMsg, result.Errors.Select(c => c.ErrorMessage));
+        Assert.Contains(Voucher.VoucherAplicavelValidation.ValorDescontoErroMsg, result.Errors.Select(c => c.ErrorMessage));
     }
 }
